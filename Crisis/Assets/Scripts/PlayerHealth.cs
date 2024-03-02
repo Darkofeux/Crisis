@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public PlayerData playerData;
+    public Health health;
 
     private void Start()
     {
         playerData.Initialize(); // Initialiser les données du joueur au début
+        health = GetComponent<Health>();
     }
+
 
     public  void OnTriggerEnter(Collider other)
     {
@@ -18,8 +21,8 @@ public class PlayerHealth : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
-                int damage = enemy.enemyData.CalculateDamage();
-                playerData.TakeDamage(damage); // Appliquer les dégâts au joueur
+               
+                health.TakeDamage(enemy.damages); // Appliquer les dégâts au joueur
             }
         }
     }
