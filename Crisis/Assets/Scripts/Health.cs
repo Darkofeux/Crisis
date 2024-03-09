@@ -5,43 +5,52 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
-   
-    [ SerializeField]
-    private int life;
-    [ SerializeField ]
-    private int lifeMax;
+    [SerializeField] private int health = 100;
+    [SerializeField] private int max_Health = 100;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Damage(10);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Heal(10);
+        }
+    }
+    public void Damage(int amount)
+    {
+        if(amount < 0)
+        {
+            throw new System.ArgumentOutOfRangeException("Ne peut pas avoir de degat negatif");
+        }
+        this.health -= amount;
 
-    public int GetlifeMax() 
-    {
-        return lifeMax;
-    }
-     public int Getlife() 
-    {
-        return life;
-    }
-    public void TakeDamage(int damage)
-    {
-        if (life > damage)
+        if (health <= 0)
         {
-            life -= damage;
-        }
-        else 
-        {
-            life = 0;
-            GameManager.GetInstance().IsDying();
-        }
-        
-    }
-    public void Heal(int value) 
-    {
-        if(life+value>lifeMax) 
-        {
-            life = lifeMax;
-        }
-        else  
-        {
-            life += value;
+            Die();
         }
     }
 
+    public void Heal(int amount)
+    {
+        if (amount < 0)
+        {
+            throw new System.ArgumentOutOfRangeException("Ne peut pas avoir de soin negatif");
+        }
+
+        if (health + amount > max_Health)
+        {
+            this.health = max_Health;
+        }
+        else
+        {
+            this.health += amount;
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Vous etes mort");
+    }
 }
