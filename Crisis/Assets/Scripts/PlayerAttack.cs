@@ -10,16 +10,16 @@ public class PlayerAttack : MonoBehaviour
     private float timeToAttack = 0.25f;
     private float timer = 0f; 
 
-    // Start is called before the first frame update
+   
     void Start()
     {
-        attackArea = transform.GetChild(0).gameObject;
+        attackArea = transform.GetChild(0).gameObject; // On recupere AttackArea qui se trouve dans la hierarchie 
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O)) // Si on appuie sur O on lance la méthode Attack
         {
             Attack();
         }
@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void Attack()
+    private void Attack() // La methode Attack
     {
         attacking = true;
         attackArea.SetActive(attacking);
