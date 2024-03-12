@@ -43,6 +43,4 @@ public class LigthLife : MonoBehaviour
             light.range *= 1f;
         }
     }
-
-
 }
