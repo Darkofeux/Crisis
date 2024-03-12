@@ -4,18 +4,45 @@ using UnityEngine;
 
 public class LigthLife : MonoBehaviour
 {
-    //private Health health;
-    //private new Light light;
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    health = GetComponent<Health>();
-    //    light = GetComponent<Light>();
-    //}
+    private Health health;
+    private new Light light;
+    private float originalLightRange;
+    void Start()
+    {
+        health = GetComponent<Health>();
+        light = GetComponent<Light>();
+        originalLightRange = light.range;
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    light.range*=health.GetlifeMax()/health.Getlife();
-    //}
+    }
+    void Update()
+    {
+
+
+        //if (health.Die())
+        //{
+        //    light.range = 0;
+        //}
+
+        //if (health.health <= health.max_Healt / 2)
+        //{
+        //    light.range = originalLightRange * 0.5f;
+        //}
+        //else
+        //{
+        //    light.range = originalLightRange;
+        //}
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GameObject pointLightObj = new GameObject("Point Light");
+            Light pointLight = pointLightObj.AddComponent<Light>();
+            pointLight.type = LightType.Point;
+            pointLight.range = 5;
+            pointLight.intensity = 0.5f;
+            pointLight.transform.position = transform.position + new Vector3(1, 0, 0);
+            light.range *= 1f;
+        }
+    }
+
+
 }
