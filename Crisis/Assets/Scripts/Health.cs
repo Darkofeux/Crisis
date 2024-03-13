@@ -18,7 +18,15 @@ public class Health : MonoBehaviour
             Heal(10);
         }
     }
-   
+    public int GetlifeMax()
+    {
+        return max_Health;
+    }
+    public int Getlife()
+    {
+        return health;
+    }
+
 
     public void Damage(int amount)
     {
@@ -51,7 +59,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Die() // Methode de mort du personnage
+    public void Die() // Methode de mort du personnage
     {
         Debug.Log("Vous etes mort"); // Fait apparaitre ce message
     }
