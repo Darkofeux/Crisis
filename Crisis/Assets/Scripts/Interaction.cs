@@ -4,45 +4,36 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-   
-    public float interactionRange = 3f; // Portée de l'interaction
-    public string interactionTag = "interaction";
-    private LigthSytem LigthSytem;
-    private bool canInteract = false; // Indique si le joueur peut interagir avec un objet
-    void Start()
+
+   public  LigthSytem LigthSytem;
+    private bool isInRange = false;
+    [SerializeField] private LayerMask interactionLayer;
+
+    private void Update()
     {
 
-    }
-
-    void Update()
-    {
-        if (canInteract&& Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) )
         {
-            InteractionLigth();
+            Collider[] hit = Physics.OverlapSphere(transform.position + Vector3.up, 2f, interactionLayer);
+            if (hit.Length > 0)
+            {
+                //Light interactedLight = hit[0].GetComponent<Light>();
+
+                //if (interactedLight != null)
+                {
+                    InteractionLigth(hit[0].gameObject);
+
+                }
+
+            }
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    public void InteractionLigth(GameObject LigthClone)
     {
-        // Vérifier si le collider en contact a le tag "interaction"
-        if (other.CompareTag(interactionTag))
-        {
-           canInteract=true;
-        }
+        //Debug.Log("Touche E enfoncée et Interaction détectée :" + interactedLight);
+        LigthSytem.LigthRecuperation(LigthClone);
     }
-
-    void OnTriggerExit(Collider other)
-    {
-        // Désactiver la possibilité d'interagir lorsque le joueur cesse d'être en contact avec l'objet
-        canInteract = false;
-    }
-
-   
-    public void InteractionLigth()
-    {
-        LigthSytem.LigthRecuperation();
-        Debug.LogError("methode lance");
-    } 
 }
 
 

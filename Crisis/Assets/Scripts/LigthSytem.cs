@@ -13,7 +13,7 @@ public class LigthSytem : MonoBehaviour
     void Start()
     {
         health = GetComponent<Health>();
-        light = GetComponent<Light>();
+        light = GetComponentInChildren<Light>();
 
     }
     void Update()
@@ -38,6 +38,7 @@ public class LigthSytem : MonoBehaviour
         {
             lightPrefab.SetActive(true);
              Vector3 spawnPosition = transform.position + transform.forward * lightDistance;
+            spawnPosition.y = 0.44f;
             GameObject newLight = Instantiate(lightPrefab, spawnPosition, Quaternion.identity);
             light.range -= lightDistance;
             health.Damage(10);
@@ -55,13 +56,14 @@ public class LigthSytem : MonoBehaviour
         // Définir la nouvelle portée de la lumière
         light.range = newLightRange;
     }
-   public  void LigthRecuperation() 
+   public  void LigthRecuperation(GameObject LigthClone) 
     {
         ligthAttackOn = false;
         if(ligthAttackOn == false)
         {
-            Destroy(lightPrefab);
+            Destroy(LigthClone);
             health.Heal(10);
         }
     }
+
 }

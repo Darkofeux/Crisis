@@ -183,7 +183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &213237444
 AudioListener:
   m_ObjectHideFlags: 0
@@ -314,13 +314,14 @@ GameObject:
   - component: {fileID: 292524388}
   - component: {fileID: 292524387}
   - component: {fileID: 292524390}
+  - component: {fileID: 292524391}
   m_Layer: 0
   m_Name: Point Light
-  m_TagString: Untagged
+  m_TagString: interactionTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &292524387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +438,27 @@ MonoBehaviour:
   lightPrefab: {fileID: 292524386}
   lightDistance: 2
   maxLightRange: 20
+--- !u!135 &292524391
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292524386}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.9710851
+  m_Center: {x: 0, y: 0, z: -0.47108507}
 --- !u!114 &615158264 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3127728407087826080, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -605,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257181896982860017, guid: 2d590ef12ea0a4d4e95ad5f41543221c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 11.05
       objectReference: {fileID: 0}
     - target: {fileID: 5257181896982860017, guid: 2d590ef12ea0a4d4e95ad5f41543221c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1110,6 +1132,7 @@ GameObject:
   - component: {fileID: 1429271777}
   - component: {fileID: 1429271779}
   - component: {fileID: 1429271778}
+  - component: {fileID: 1429271780}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1292,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1429271769}
-  lightPrefab: {fileID: 292524386}
+  lightPrefab: {fileID: 7645903810203803499, guid: 4f6eb3f538c2bc8409d9e105d2e0780c, type: 3}
   lightDistance: 10
   maxLightRange: 20
 --- !u!114 &1429271778
@@ -1380,6 +1403,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1429271780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429271768}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280b69ba1c2fb4f479fb95f8aa4c100e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1603585810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7313654230448209575, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -1478,15 +1513,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21
+      value: 10.66
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5496433
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.458086
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
       propertyPath: m_LocalRotation.w
